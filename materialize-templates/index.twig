@@ -1,0 +1,17 @@
+{% extends "base.twig" %}
+
+{% block content %}
+
+    <div class="row">
+        {% for post in posts %}
+            <div class="col l4 m6 s12">
+                <h2 class="h2"><a href="{{post.link}}">{{post.title}}</a></h2>
+                <p>{{post.preview.length(25)}}</p>
+                {% if post.thumbnail.src %}
+                    <img src="{{post.thumbnail.src}}" />
+                {% endif %}
+            </div>
+        {% endfor %}
+
+    </div>
+{% endblock %}

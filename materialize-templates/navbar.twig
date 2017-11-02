@@ -1,0 +1,20 @@
+<nav>
+    <div class="nav-wrapper">
+        <a href="{{ site.link }}" title="{{ site.link }}" class="brand-logo">{{ site.name }}</a>
+        {% set menu = menu.get_items %}
+        {% if menu %}
+            <a href="#" data-activates="mobile-drawer" class="button-collapse"><i class="material-icons">menu</i></a>
+            <ul class="right hide-on-med-and-down">
+                {% for item in menu %}
+                    <li><a href="{{item.get_link}}">{{item.title}}</a></li>
+                    {% endfor %}
+            </ul>
+            <ul class="side-nav" id="mobile-drawer">
+                <li><a href="{{ site.link }}" title="{{ site.link }}">home</a></li>
+                    {% for item in menu %}
+                    <li><a href="{{item.get_link}}">{{item.title}}</a></li>
+                    {% endfor %}
+            </ul>
+        {% endif %}
+    </div>
+</nav>

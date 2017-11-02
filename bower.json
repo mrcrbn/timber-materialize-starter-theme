@@ -1,0 +1,14 @@
+{
+    "name": "timber-materialize-starter-theme",
+    "version": "0.0.45",
+    "main": "static/css/main.css",
+    "ignore": [
+        ".jshintrc", "**/*.txt"
+    ],
+    "dependencies": {
+        "materialize": "0.100.2",
+        "roboto-fontface": "0.8.0"
+    },
+    "devDependencies": {
+    }
+}

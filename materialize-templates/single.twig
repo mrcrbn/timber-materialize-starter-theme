@@ -1,0 +1,64 @@
+{% extends "base.twig" %}
+
+{% block content %}
+    <article class="post-type-{{post.post_type}}" id="post-{{post.ID}}">
+        <section class="article-content">
+            <h2 class="article-h2">{{post.title}}</h2>
+            <div class="article-body">
+                {{post.content}}
+            </div>
+        </section>
+            <hr>
+        <section class="comment-box">
+            <!-- comments -->
+            <div class="comments">
+                {% if post.comments %}
+                    <h3> comments </h3>
+                    {% for cmt in post.comments %}
+                        <div class="card-panel z-depth-0">
+                            {{cmt.content}}
+                        </div>
+                    {% endfor %}
+                {% endif %}
+            </div>
+
+            {% if post.comment_status == "closed" %}
+                <p> comments for this post are closed </p>
+            {% else %}
+                <!-- comment form -->
+                {# include "comment-form.twig" #}
+            {% endif %}
+        </section>
+        <form id="form" class="comment-form" method="post" action="{{ site.url~'/wp-comments-post.php' }}">
+
+
+            <div>
+                <label for="comment"><h5 class="black-text">comment</h5> </label>
+                {% if  user %}
+                    <input type="hidden" name="email" value="{{ user.email }}">
+                    <input type="hidden" name="author" value="{{ user.name }}">
+                    <input type="hidden" name="url" value="{{ user.link }}">
+                {% else %}
+                    <div>
+                        <label for="email"> email </label>
+                        <input required name="email" type="email" id="email" class="white validate"/>
+
+                        <label for="author"> username </label>
+                        <input required name="author" type="text" id="author" class="white validate"/>
+
+                    </div>
+                {% endif %}
+                <textarea placeholder="comment text" class="materialize-textarea white " name="comment" cols="60" rows="20" id="comment"></textarea>
+            </div>
+
+            <input name="comment_post_ID" value="{{ post.id }}" id="comment_post_ID" type="hidden">
+            <input name="comment_parent" id="comment_parent" value="{{ comment.ID|default('0') }}" type="hidden">
+
+            <div>
+                <button type="submit" name="Submit" class="btn"> send </button>
+                <button type="reset" class="btn"> cancel </button>
+                <p> Your comment will be revised by the site if needed. </p>
+            </div>
+        </form>
+    </article>
+{% endblock %}

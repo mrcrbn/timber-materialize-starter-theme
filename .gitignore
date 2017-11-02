@@ -1,0 +1,14 @@
+/bin/
+/static/js/jquery.min.js
+/static/js/materialize.min.js
+/static/fonts/roboto/
+/static/css/
+/dist/
+/package-lock.json
+/templates/
+/static/fonts/
+/nbproject/
+/static/images/code_screen.jpg
+/static/images/sample-2.jpeg
+/static/images/code_screen2.jpg
+/static/images/sample-1.jpg

@@ -1,0 +1,24 @@
+@import "../vendor/materialize/sass/components/color";
+/****************OVERRIDE MATERIALIZE DEFAULTs'******************/
+$roboto-font-path: "../fonts/roboto/" !default;
+
+//overide materialize default variables here
+
+$primary-color: color("indigo", "base") !default;
+$secondary-color: color("amber", "lighten-1") !default;
+
+/***************************************************************/
+
+//materialize extention example
+.blurb-card{
+    @extend .card-panel;
+    background-color: transparent !important;
+    box-shadow: none !important;
+    i{    
+        font-size: 9rem;
+        color: $secondary-color;
+    }
+}
+/***************************************************************/
+@import "../vendor/materialize/sass/materialize.scss";
+
